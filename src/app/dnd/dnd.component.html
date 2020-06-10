@@ -1,0 +1,36 @@
+<p>dnd works!</p>
+<button (click)="test()">Test</button>
+<div *ngIf="dndTreasureResponse; else noResponse">
+  <div *ngFor="let treasure of dndTreasureResponse.dndTreasure">
+    <div> {{ treasure.info }}</div>
+    <div>
+      CP: {{ treasure.currency.copper }} SP: {{ treasure.currency.silver }} EP: {{ treasure.currency.electrum }} GP: {{ treasure.currency.gold }} PP: {{ treasure.currency.platinum }}
+    </div>
+      Items: <br>
+    <div *ngFor="let itemWrapper of treasure.items">
+      {{ itemWrapper.item.name }} x{{ itemWrapper.amount }} <br>
+      Item type: {{ itemWrapper.item.dndItemType}}, Item rarity: {{ itemWrapper.item.itemRarity }} <br>
+      <div class="description" [innerHTML]="itemWrapper.item.description"></div>
+      {{ itemWrapper.location }}
+    </div>
+      Valuables: <br>
+    <div *ngFor="let itemWrapper of treasure.valuables">
+      {{ itemWrapper.item.name }} x{{ itemWrapper.amount }} <br>
+      Item type: {{ itemWrapper.item.dndItemType}}, Item rarity: {{ itemWrapper.item.itemRarity }} <br>
+      <div class="description" [innerHTML]="itemWrapper.item.description"></div>
+      {{ itemWrapper.location }}
+    </div>
+    <br />
+    --------------------------------------------------------------
+    <br />
+  </div>
+</div>
+
+<ng-template #noResponse>
+  <div *ngIf="!error else error">
+      Click to generate treasure.
+    </div>
+    <ng-template #error>
+      We had a problem while getting your treasure. Try again.
+    </ng-template>
+</ng-template>
