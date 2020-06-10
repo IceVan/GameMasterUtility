@@ -1,24 +1,35 @@
-<p>dnd works!</p>
 <button (click)="test()">Test</button>
 <div *ngIf="dndTreasureResponse; else noResponse">
   <div *ngFor="let treasure of dndTreasureResponse.dndTreasure">
-    <div> {{ treasure.info }}</div>
-    <div>
+    <div class="treasure"> {{ treasure.info }}</div>
+    <div class="currency">
       CP: {{ treasure.currency.copper }} SP: {{ treasure.currency.silver }} EP: {{ treasure.currency.electrum }} GP: {{ treasure.currency.gold }} PP: {{ treasure.currency.platinum }}
     </div>
-      Items: <br>
+      <p>Items: </p>
     <div *ngFor="let itemWrapper of treasure.items">
-      {{ itemWrapper.item.name }} x{{ itemWrapper.amount }} <br>
-      Item type: {{ itemWrapper.item.dndItemType}}, Item rarity: {{ itemWrapper.item.itemRarity }} <br>
+      <div class="item-name">
+        {{ itemWrapper.item.name }} <span *ngIf="itemWrapper.amount>1">x{{ itemWrapper.amount }}</span>
+      </div>
+      <div class="item-types">
+        Item type: {{ itemWrapper.item.dndItemType}}, Item rarity: {{ itemWrapper.item.itemRarity }}
+      </div>
       <div class="description" [innerHTML]="itemWrapper.item.description"></div>
-      {{ itemWrapper.location }}
+      <div class="item-location">
+        {{ itemWrapper.location }}
+      </div>
     </div>
-      Valuables: <br>
+      <p>Valuables:</p>
     <div *ngFor="let itemWrapper of treasure.valuables">
-      {{ itemWrapper.item.name }} x{{ itemWrapper.amount }} <br>
-      Item type: {{ itemWrapper.item.dndItemType}}, Item rarity: {{ itemWrapper.item.itemRarity }} <br>
+      <div class="item-name">
+        {{ itemWrapper.item.name }} <span *ngIf="itemWrapper.amount>1">x{{ itemWrapper.amount }}</span>
+      </div>
+      <div class="item-types">
+        Item type: {{ itemWrapper.item.dndItemType}}, Item rarity: {{ itemWrapper.item.itemRarity }}
+      </div>
       <div class="description" [innerHTML]="itemWrapper.item.description"></div>
-      {{ itemWrapper.location }}
+      <div class="item-location">
+        {{ itemWrapper.location }}
+      </div>
     </div>
     <br />
     --------------------------------------------------------------
