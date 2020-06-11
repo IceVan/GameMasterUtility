@@ -29,12 +29,18 @@ export class DndComponent implements OnInit {
 
   }
 
+  setGenerateTreasureParams(numberOfTreasures: number, encounterType: string) : void{
+    this.dndTreasureService.setTreasureParams(numberOfTreasures, encounterType);
+  }
+
   private clear() : void{
     this.error = undefined;
     this.dndTreasureResponse = undefined;
   }
 
   ngOnInit(): void {
+    this.clear();
+    this.dndTreasureService.clearTreasureParams();
   }
 
 }

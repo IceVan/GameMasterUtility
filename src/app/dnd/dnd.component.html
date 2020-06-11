@@ -1,4 +1,24 @@
-<button (click)="test()">Test</button>
+<div>
+<label>
+  Number of treasures to generate: <input #numberOfTreasures />
+</label>
+<!-- <label>
+  Type of encounter: <input #encounterType />
+</label> -->
+<label for="encounter">Number of treasures to generate:
+  <select #encounterType id="encounter">
+    <option value="EARLY">Early game</option>
+    <option value="MID">Mid Game</option>
+    <option value="LATE">Late game</option>
+    <option value="END">End game</option>
+  </select>
+</label>
+<button (click)="setGenerateTreasureParams(numberOfTreasures.value, encounterType.value); test();">Test</button>
+</div>
+<br />
+
+
+
 <div *ngIf="dndTreasureResponse; else noResponse">
   <div *ngFor="let treasure of dndTreasureResponse.dndTreasure">
     <div class="treasure"> {{ treasure.info }}</div>
