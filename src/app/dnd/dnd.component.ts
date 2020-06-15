@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { DndTreasureService } from  './dnd-treasure.service';
 import { DndTreasure } from '../model/dnd/DndTreasure'
 import { DndGetTreasureResponse } from "../model/dnd/DndGetTreasureResponse";
+import { GetTreasureParams } from "./treasure/GetTreasureParams";
 
 @Component({
   selector: 'app-dnd',
@@ -17,8 +18,9 @@ export class DndComponent implements OnInit {
 
   constructor(private dndTreasureService : DndTreasureService) { }
 
-  test() : void {
+  generateTreasure(params : GetTreasureParams) : void{
     this.clear();
+    this.setGenerateTreasureParams(params.numberOfTreasures, params.encounterType);
 
     this.dndTreasureService.getGenerateTreasureEndpointConfig()
     .subscribe(
@@ -26,7 +28,6 @@ export class DndComponent implements OnInit {
       error => this.error = error
     );
     console.log(this.dndTreasureResponse);
-
   }
 
   setGenerateTreasureParams(numberOfTreasures: number, encounterType: string) : void{

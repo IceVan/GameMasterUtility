@@ -1,67 +1,19 @@
-<div>
-<label>
-  Number of treasures to generate: <input #numberOfTreasures />
-</label>
-<!-- <label>
-  Type of encounter: <input #encounterType />
-</label> -->
-<label for="encounter">Number of treasures to generate:
-  <select #encounterType id="encounter">
-    <option value="EARLY">Early game</option>
-    <option value="MID">Mid Game</option>
-    <option value="LATE">Late game</option>
-    <option value="END">End game</option>
-  </select>
-</label>
-<button (click)="setGenerateTreasureParams(numberOfTreasures.value, encounterType.value); test();">Test</button>
-</div>
-<br />
-
-
-
-<div *ngIf="dndTreasureResponse; else noResponse">
-  <div *ngFor="let treasure of dndTreasureResponse.dndTreasure">
-    <div class="treasure"> {{ treasure.info }}</div>
-    <div class="currency">
-      CP: {{ treasure.currency.copper }} SP: {{ treasure.currency.silver }} EP: {{ treasure.currency.electrum }} GP: {{ treasure.currency.gold }} PP: {{ treasure.currency.platinum }}
-    </div>
-      <p>Items: </p>
-    <div *ngFor="let itemWrapper of treasure.items">
-      <div class="item-name">
-        {{ itemWrapper.item.name }} <span *ngIf="itemWrapper.amount>1">x{{ itemWrapper.amount }}</span>
-      </div>
-      <div class="item-types">
-        Item type: {{ itemWrapper.item.dndItemType}}, Item rarity: {{ itemWrapper.item.itemRarity }}
-      </div>
-      <div class="description" [innerHTML]="itemWrapper.item.description"></div>
-      <div class="item-location">
-        {{ itemWrapper.location }}
-      </div>
-    </div>
-      <p>Valuables:</p>
-    <div *ngFor="let itemWrapper of treasure.valuables">
-      <div class="item-name">
-        {{ itemWrapper.item.name }} <span *ngIf="itemWrapper.amount>1">x{{ itemWrapper.amount }}</span>
-      </div>
-      <div class="item-types">
-        Item type: {{ itemWrapper.item.dndItemType}}, Item rarity: {{ itemWrapper.item.itemRarity }}
-      </div>
-      <div class="description" [innerHTML]="itemWrapper.item.description"></div>
-      <div class="item-location">
-        {{ itemWrapper.location }}
-      </div>
-    </div>
-    <br />
-    --------------------------------------------------------------
-    <br />
+<div class="row">
+  <div class="col-2"></div>
+  <div class="col-6">
+    <app-treasure [dndTreasureResponse] = "dndTreasureResponse"></app-treasure>
   </div>
+  <div class="col-2">
+    <app-navbar (getTreasureParams)="generateTreasure($event)"></app-navbar>
+  </div>
+  <div class="col-2"></div>
 </div>
 
-<ng-template #noResponse>
-  <div *ngIf="!error else error">
-      Click to generate treasure.
-    </div>
-    <ng-template #error>
-      We had a problem while getting your treasure. Try again.
-    </ng-template>
-</ng-template>
+<div class="row game-component-background">
+  <div class="col-2"></div>
+  <div class="col-6">
+  </div>
+  <div class="col-2 game-component-dark-background">
+  </div>
+  <div class="col-2"></div>
+</div>

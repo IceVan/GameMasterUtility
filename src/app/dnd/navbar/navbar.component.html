@@ -1,0 +1,14 @@
+<div>
+<label>
+  Number of treasures to generate: <input #numberOfTreasures />
+</label>
+<label for="encounter">Encounter type:
+  <select #encounterType id="encounter">
+    <option value="EARLY">Early game</option>
+    <option value="MID">Mid Game</option>
+    <option value="LATE">Late game</option>
+    <option value="END">End game</option>
+  </select>
+</label>
+<button (click)="generateTreasure(numberOfTreasures.value, encounterType.value);">Test</button>
+</div>

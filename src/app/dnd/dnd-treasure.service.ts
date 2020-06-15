@@ -5,7 +5,8 @@ import { HttpErrorResponse, HttpResponse, HttpParams } from '@angular/common/htt
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
-import { DndGetTreasureResponse } from '../model/dnd/DndGetTreasureResponse'
+import { DndGetTreasureResponse } from '../model/dnd/DndGetTreasureResponse';
+import { GetTreasureParams } from "./treasure/GetTreasureParams";
 
 @Injectable({
   providedIn: 'root'
@@ -31,9 +32,4 @@ export class DndTreasureService {
   clearTreasureParams() : void{
     this.getTreasureParams = undefined;
   }
-}
-
-class GetTreasureParams{
-    numberOfTreasures: number = 1;
-    encounterType: string = "EARLY";
 }

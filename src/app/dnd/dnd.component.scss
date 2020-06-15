@@ -1,0 +1,12 @@
+$primary: rgb(75, 70, 70);
+
+row.game-component-background{
+  z-index: -1;
+  position: fixed;
+  background-color: lighten($primary, 20%);
+
+  .game-component-dark-background{
+    padding: 20px 0;
+    background-color: $primary;
+  }
+}

@@ -1,15 +1,22 @@
 <header>
-  <div class="container">
-    <a routerLink="/" class="logo">Treasure Generator</a>
-    <nav>
-      <ul>
-        <li><a href="#" routerLink="/">Home</a></li>
-        <li><a href="#" routerLink="/dnd">DnD Genereator</a></li>
-      </ul>
-    </nav>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col"></div>
+      <div class="col-8">
+        <nav>
+          <ul>
+            <li><a href="#" routerLink="/">Home</a></li>
+            <li><a href="#" routerLink="/dnd">DnD Genereator</a></li>
+          </ul>
+        </nav>
+
+        <a routerLink="/" class="logo">Treasure Generator</a>
+      </div>
+    <div class="col"></div>
+   </div>
   </div>
 </header>
 
-<div class="container">
+<div class="container-fluid">
   <router-outlet></router-outlet>
 </div>

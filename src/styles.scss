@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
 
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
@@ -10,11 +11,6 @@ body{
   font-size: 18px;
 }
 
-.container{
-  width: 80%;
-  margin: 0 auto;
-}
-
 header{
   background: $primary;
   padding: 1em 0;
@@ -22,10 +18,15 @@ header{
   a{
     color: white;
     text-decoration: none;
-  }
 
-  a.logo{
-    font-weight: bold;
+    &.logo{
+      font-weight: bold;
+    }
+
+    &:hover{
+      color: white;
+      text-decoration: none;
+    }
   }
 
   nav{

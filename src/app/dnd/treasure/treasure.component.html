@@ -1,0 +1,46 @@
+<div *ngIf="dndTreasureResponse; else noResponse">
+  <div *ngFor="let treasure of dndTreasureResponse.dndTreasure">
+    <div class="treasure"> {{ treasure.info }}</div>
+    <div class="currency">
+      CP: {{ treasure.currency.copper }} SP: {{ treasure.currency.silver }} EP: {{ treasure.currency.electrum }} GP: {{ treasure.currency.gold }} PP: {{ treasure.currency.platinum }}
+    </div>
+      <p>Items: </p>
+    <div *ngFor="let itemWrapper of treasure.items">
+      <div class="item-name">
+        {{ itemWrapper.item.name }} <span *ngIf="itemWrapper.amount>1">x{{ itemWrapper.amount }}</span>
+      </div>
+      <div class="item-types">
+        Item type: {{ itemWrapper.item.dndItemType}}, Item rarity: {{ itemWrapper.item.itemRarity }}
+      </div>
+      <div class="description" [innerHTML]="itemWrapper.item.description"></div>
+      <div class="item-location">
+        {{ itemWrapper.location }}
+      </div>
+    </div>
+      <p>Valuables:</p>
+    <div *ngFor="let itemWrapper of treasure.valuables">
+      <div class="item-name">
+        {{ itemWrapper.item.name }} <span *ngIf="itemWrapper.amount>1">x{{ itemWrapper.amount }}</span>
+      </div>
+      <div class="item-types">
+        Item type: {{ itemWrapper.item.dndItemType}}, Item rarity: {{ itemWrapper.item.itemRarity }}
+      </div>
+      <div class="description" [innerHTML]="itemWrapper.item.description"></div>
+      <div class="item-location">
+        {{ itemWrapper.location }}
+      </div>
+    </div>
+    <br />
+    --------------------------------------------------------------
+    <br />
+  </div>
+</div>
+
+<ng-template #noResponse>
+  <div *ngIf="!error else error">
+      Click to generate treasure.
+    </div>
+    <ng-template #error>
+      We had a problem while getting your treasure. Try again.
+    </ng-template>
+</ng-template>
